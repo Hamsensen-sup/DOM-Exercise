@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // let num1 = prompt('Enter First Number:');
+        // let num2 = prompt('Enter Second Number:');
+
+        // let sum = parseInt(num1) + parseInt(num2);
+
+        // alert(sum);
+        
+
+        function chooseCalculation() {
+            let num1 = prompt('Enter First Number:');
+            let num2 = prompt('Enter Second Number:');
+            let operation = prompt('Choose an operation: [1]Sum [2]Difference [3]Product [4]Quotient');
+
+            if (operation == 1) {
+                sum = Number(num1) + Number(num2);
+                alert(sum);
+            }
+            else if (operation == 2) {
+                difference = Number(num1) - Number(num2);
+                alert(difference);
+            }
+            else if (operation == 3) {
+                product = Number(num1) * Number(num2);
+                alert(product);
+            }
+            else if (operation == 4) {
+                quotient = Number(num1) / Number(num2);
+                alert(quotient);
+            }
+            else {
+                alert('Not in the choices');
+            }
+        }
+
+        chooseCalculation();
+    </script>
+</body>
+</html>

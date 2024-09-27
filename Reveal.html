@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript sample</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 class="main-heading">Event Listeners</h1>
+    <div class="container">
+        <button class="reveal-btn">Reveal</button>
+        <div class="hidden-content">
+            <p class="text"><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde autem nam atque illo illum modi natus reprehenderit amet aliquid quisquam tempora eveniet ipsam quibusdam nostrum, ab dolore nisi fugiat beatae.</span><span>Illum aut odio ratione modi. Magni, provident enim! Fugiat odio maxime, numquam consectetur recusandae illo reiciendis voluptas vel impedit consequuntur tempore quaerat atque fugit aliquam at maiores deserunt sequi cumque?</span><span>Suscipit odit obcaecati eligendi tenetur ex at, porro aspernatur facere numquam, et optio veniam ipsum magnam cupiditate ratione reprehenderit, ut quisquam in ad? Explicabo id quidem voluptate amet iste sequi?</span></p>
+            <p class="text"><span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde autem nam atque illo illum modi natus reprehenderit amet aliquid quisquam tempora eveniet ipsam quibusdam nostrum, ab dolore nisi fugiat beatae.</span><span>Illum aut odio ratione modi. Magni, provident enim! Fugiat odio maxime, numquam consectetur recusandae illo reiciendis voluptas vel impedit consequuntur tempore quaerat atque fugit aliquam at maiores deserunt sequi cumque?</span><span>Suscipit odit obcaecati eligendi tenetur ex at, porro aspernatur facere numquam, et optio veniam ipsum magnam cupiditate ratione reprehenderit, ut quisquam in ad? Explicabo id quidem voluptate amet iste sequi?</span></p>
+        </div>
+        
+        
+    </div>
+    
+    <script>
+        const revealbtn = document.querySelector(".reveal-btn");
+        const hiddenContent = document.querySelector(".hidden-content");
+
+        function revealContent() {
+            if(hiddenContent.classList.contains("reveal-btn")) {
+                hiddenContent.classList.remove("reveal-btn")
+            }else{
+                hiddenContent.classList.add("reveal-btn")
+            }
+        }
+
+        revealbtn.addEventListener("click", revealContent);
+    </script>
+</body>
+</html>

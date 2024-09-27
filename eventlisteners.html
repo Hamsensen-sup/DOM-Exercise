@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listeners</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        margin: 2rem;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin: 1rem;
+    }
+    .boxes{
+        border: 1px  solid black;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .boxes h1{
+        margin-bottom: 7rem;
+    }
+    button{
+        padding: 10px;
+        width: 100%;
+        border-radius: 10px;
+        border: 1px none black;
+        transition: 0.5s ease;
+    }
+    button:hover{
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+</style>
+<body>
+    <center><h1 id="main-heading">Event Listeners</h1></center>
+
+    <div class="container">
+        <div class="boxes box-1">
+            <h1 id="heading">Example 1</h1>
+            <button class="btn-1">Enter</button>
+        </div>
+        <div class="boxes box-2">
+            <h1 id="heading">Example 2</h1>
+            <button class="btn-2">Enter</button>
+        </div>
+        <div class="boxes box-3">
+            <h1 id="heading">Example 3</h1>
+            <button class="btn-3">Enter</button>
+        </div>
+    </div>
+    <script>
+        const buttonTwo = document.querySelector('.btn-2');
+
+        function alertBtn(){
+            alert('Please enter');
+        }
+
+        buttonTwo.addEventListener('click', alertBtn);
+
+        const newBackgroundColor = document.querySelector('.box-3');
+
+        function changeBackgroundColor(){
+            newBackgroundColor.style.backgroundImage = 'url(red.png)';
+            newBackgroundColor.style.backgroundSize = 'cover';
+        }
+        function mouseOut(){
+            newBackgroundColor.style.backgroundImage = "";
+        }
+
+        newBackgroundColor.addEventListener('mouseover', changeBackgroundColor);
+        newBackgroundColor.addEventListener('mouseout', mouseOut);
+
+    </script>
+</body>
+</html>

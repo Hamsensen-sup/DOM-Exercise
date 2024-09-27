@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div id="timer">00:00:00</div>
+
+    <div class="button">
+        <button id="startStopBtn">
+            <i class="fas fa-play" id="play"></i>
+        </button>
+
+        <button id="resetBtn">
+            <i class="fas fa-arrow-rotate-left" id="reset"></i>
+        </button>
+
+        <button id="lapBtn">
+            <i class="fas fa-pen" id="lap"></i>
+        </button>
+
+        <button id="clearBtn">
+            <i class="fas fa-trash" id="clear"></i>
+        </button>
+
+        <div class="" id="timeLap">
+            <h3>Time Log:</h3>
+            <ol id="lapList"></ol>
+        </div>
+    </div>
+    <script>
+        //variable for buttons
+        const startStopBtn = document.querySelector('#startStopBtn');
+        const resetBtn = document.querySelector('#resetBtn');
+
+        //variable for time values
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+        //variable for set interval and timer status
+        let timerInterval = null;
+        let timerStatus = "stopped";
+
+        //variable for leading zero
+
+        let leadingSeconds = 0;
+        let leadingMinutes = 0;
+        let leadingHours = 0;
+
+        //variable for time lap
+
+        let lapCount = 0;
+        let lapList = document.getElementById('lapList');
+        let lapLog = [];
+            
+        
+        //functions
+
+
+        function stopWatch(){
+            seconds++
+
+            if(seconds / 60 == 1){
+                seconds = 0;
+                minutes++;
+
+                if(minutes / 60 == 1){
+                    minutes = 0;
+                    hours++;
+                }
+            }
+
+            if(seconds < 10){
+                leadingSeconds = "0" + seconds.toString();
+            } else{
+                leadingSeconds = seconds;
+            }
+
+            if(minutes < 10){
+                leadingMinutes = "0" + minutes.toString();
+            } else{
+                leadingMinutes = minutes;
+            }
+            
+            if(hours < 10){
+                leadingHours = "0" + hours.toString();
+            } else{
+                leadingHours = hours;
+            }
+
+            let displayTimer = document.getElementById('timer').innerText = 
+            leadingHours + ":" + leadingMinutes + ":" + leadingSeconds;
+        }
+
+        // window.setInterval(stopWatch, 1)
+
+        startStopBtn.addEventListener('click', function(){
+            if(timerStatus === "stopped"){
+                timerInterval = setInterval(stopWatch, 1000);
+                timerStatus = "running";
+                startStopBtn.innerHTML = '<i class="fas fa-pause" id="pause"></i>';
+            } else if(timerStatus === "running"){
+                clearInterval(timerInterval);
+                timerStatus = "stopped";
+                startStopBtn.innerHTML = '<i class="fas fa-play" id="play"></i>';
+            } else if(timerStatus === "paused"){
+                timerInterval = setInterval(stopWatch, 1000);
+                timerStatus = "running";
+                startStopBtn.innerHTML = '<i class="fas fa-pause" id="pause"></i>';
+            }
+        });
+
+        resetBtn.addEventListener('click', function(){
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+        });
+
+        lapBtn.addEventListener('click', function(){
+            let lapTime = document.createElement('li');
+            lapTime.innerText = leadingHours + ":" + leadingMinutes + ":" + leadingSeconds;
+            lapList.appendChild(lapTime);
+            lapLog.push(leadingHours + ":" + leadingMinutes + ":" + leadingSeconds);
+            lapCount++;
+
+            console.log(lapLog);
+        });
+
+
+        //clear lap log on page reload
+        window.addEventListener('beforeunload', function(){
+            lapLog = [];
+        });
+
+        //erase lap log
+
+        clearBtn.addEventListener('click', function(){
+            lapList.innerHTML = "";
+            lapLog = [];
+            lapCount = 0;
+            console.log(lapLog);
+        });
+
+
+        
+
+    </script>
+</body>
+</html>

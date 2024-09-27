@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: gray;
+    }
+    .accordion{
+        background-color: white;
+        width: 65%;
+        border-radius: 10px;
+        padding: 30px;
+    }
+    .accordion .accordion-title{
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .accordion .content-container .question{
+        padding: 18px 0px;
+        font-size: 20px;
+        cursor: pointer;
+        border-bottom: 1px solid black;
+        position: relative;
+    }
+    .accordion .content-container .question:after{
+        content: '+';
+        position: absolute;
+        right: -5px;
+    }
+
+    .accordion .content-container .answer{
+        padding-top: 15px;
+        font-size: 22px;
+        line-height: 1.5;
+        width: 100%;
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+
+    /*JAvascript styling*/
+    .accordion .content-container.active .answer{
+        height: 150px;
+    } 
+    .accordion .content-container.active .question:after{
+        content: '_';
+    }
+
+</style>
+<body>
+    <div class="accordion">
+        <h2 class="accordion-title">Frequently Asked Questions</h2>
+
+        <div class="content-container">
+            <div class="question">What is the return Policy?</div>
+            <div class="answer">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Corporis eligendi omnis excepturi enim tempora consequatur adipisci sequi quia. 
+                Atque laborum expedita at illum tempora laudantium, ut rem fuga 
+                dolorum doloremque.</div>
+        </div>
+
+        <div class="content-container">
+            <div class="question">What is the return Policy?</div>
+            <div class="answer">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Corporis eligendi omnis excepturi enim tempora consequatur adipisci sequi quia. 
+                Atque laborum expedita at illum tempora laudantium, ut rem fuga 
+                dolorum doloremque.</div>
+        </div>
+
+        <div class="content-container">
+            <div class="question">What is the return Policy?</div>
+            <div class="answer">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Corporis eligendi omnis excepturi enim tempora consequatur adipisci sequi quia. 
+                Atque laborum expedita at illum tempora laudantium, ut rem fuga 
+                dolorum doloremque.</div>
+        </div>
+    
+    </div>
+    <script>
+        const accordion = document.querySelectorAll(".content-container");
+        
+        for(let i = 0; i < accordion.length; i++){
+
+            accordion[i].addEventListener('click', function() {
+                this.classList.toggle('active');
+            })
+
+        };
+    </script>
+</body>
+</html>
