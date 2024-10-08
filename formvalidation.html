@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="error"></div>
+    <form id="form" action="/" method="get" >
+        <label for="name" required>Name</label>
+        <input type="name" name="name" id="name">
+        <label for="name">Password</label>
+        <input type="password" name="password" id="password" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const name = document.getElementById("name")
+        const password = document.getElementById("password")
+        const form = document.getElementById("form")
+        const errorElement = document.getElementById("error")
+
+        form.addEventListener("submit", function(e){
+            let message = []
+
+            if(name.value === "name" && password.value === "password"){
+                message.push("You have entered the website")
+            }
+
+            if(name.value != "name"){
+                message.push("wrong name")
+            }
+
+            if(password.value != "password"){
+                message.push("wrong password")
+            }
+
+            if(name.value === "" && password.value === ""){
+                message.push("Please enter name and password")
+            }
+
+
+
+            e.preventDefault()
+            errorElement.textContent = message
+        })
+
+
+    </script>
+</body>
+</html>

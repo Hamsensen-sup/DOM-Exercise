@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        width: 50%;
+        height: 100px;
+        overflow: auto;
+    }
+    .box{
+        background-color: black;
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+        transition: 1s;
+    }
+</style>
+<body>
+    <div class="container">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa id, porro ducimus laboriosam facilis, amet sunt ipsam voluptatem, nulla nisi vero quos soluta? Consectetur minima ratione, quaerat at rerum animi.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, ipsum assumenda vero quibusdam nisi deleniti? Vel, ex quae cupiditate consectetur tempore, omnis quam nam odio quas dolores cumque ratione magnam?
+    </div>
+    <p id="display"></p>
+    <div class="box">
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        const displayText = document.querySelector("#display")
+        const box = document.querySelector(".box")
+        let count = 0
+
+        container.addEventListener("scroll", function(){
+            count += 1
+            displayText.textContent = count
+            box.style.opacity = "1"
+            box.style.width = "300px"
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<style>
+    body{
+        height:100vh;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 10px;
+    }
+    .task-container{
+        padding: 1rem;
+    }
+    .task{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    .task li{
+        list-style-type: none;
+        flex: 1;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="add-task-container">
+            <input type="text" id="input-task" placeholder="Enter Task">
+            <button id="add-task"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="task-container" id="task-container">
+
+        </div>
+    </div>
+    <script>
+        const addTask = document.getElementById("add-task")
+        const taskContainer = document.getElementById("task-container")
+        const inputTask = document.getElementById("input-task")
+
+        addTask.addEventListener("click", function(){
+            let task = document.createElement('div')
+            task.classList.add('task')
+
+            let li = document.createElement('li')
+            li.innerText = `${inputTask.value}`
+            task.appendChild(li)
+
+            let deleteBtn = document.createElement('button')
+            deleteBtn.innerHTML = `<i class="fa-solid fa-trash"></i>`
+            deleteBtn.classList.add('deleteTask')
+            task.appendChild(deleteBtn)
+
+            let checkBtn = document.createElement('button')
+            checkBtn.innerHTML = `<i class="fa-solid fa-check"></i>`
+            checkBtn.classList.add('checkTask')
+            task.appendChild(checkBtn)
+            
+            if(inputTask.value === ""){
+                alert("please enter a task")
+            }else{
+                taskContainer.appendChild(task)
+            }
+            inputTask.value = ""
+
+            checkBtn.addEventListener("click", function(){
+                task.style.textDecoration = "line-through"
+            })
+
+            deleteBtn.addEventListener("click", function(){
+                taskContainer.removeChild(task)
+            })
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: gray;
+    }
+    .modal-container{
+        background-color: white;
+        position: absolute;
+        top: 5rem;
+        left: 5rem;    
+        border: 3px solid black;
+        cursor: pointer;
+    }
+    .modal-container h3{
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: end;
+        padding-bottom: 3px;
+        font-size: 15px;
+    }
+    .modal-container p{
+        padding: 2rem;
+    }
+</style>
+<body>
+    <button id="modal-btn">Open Modal</button>
+
+    <div class="modal-container">
+        <h3 id="close">&#x274c;</h3>
+        <p>This is a modal</p>
+    </div>
+
+    <script>
+        const modalBtn = document.querySelector("#modal-btn")
+        const modal = document.querySelector(".modal-container") 
+        const closeBtn = document.querySelector("#close")
+
+        modalBtn.addEventListener("click", function(){
+            modal.style.display = "block"
+        })
+
+        closeBtn.addEventListener("click", function(){
+            modal.style.display = "none"
+            window.onclick()
+        })
+    </script>
+</body>
+</html>
